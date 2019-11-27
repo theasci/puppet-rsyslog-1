@@ -44,10 +44,5 @@ describe 'Rsyslog base' do
     describe file('/etc/yum.repos.d/upstream_rsyslog.repo') do
       it { is_expected.to exist }
     end
-  when 'Debian'
-    next if fact('os.name') != 'Ubuntu'
-    describe file("/etc/apt/sources.list.d/adiscon-ubuntu-v8-stable-#{fact('os.distro.codename')}.list") do
-      it { is_expected.to exist }
-    end
   end
 end

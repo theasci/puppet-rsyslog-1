@@ -37,12 +37,4 @@ def cleanup_helper
 end
 
 def upstream_cleanup
-  if fact('os.name') == 'Ubuntu' # rubocop:disable Style/GuardClause
-    pp = <<-CLEANUP_MANIFEST
-      include ::apt
-      apt::ppa { 'ppa:adiscon/v8-stable': ensure => absent }
-    CLEANUP_MANIFEST
-
-    apply_manifest(pp, catch_failures: true)
-  end
 end

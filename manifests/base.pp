@@ -11,12 +11,6 @@ class rsyslog::base {
 
   if $rsyslog::use_upstream_repo {
     case $facts['os']['family'] {
-      'Debian': {
-        if $facts['os']['name'] == 'Ubuntu' {
-          include apt
-          apt::ppa { 'ppa:adiscon/v8-stable': }
-        }
-      }
       'RedHat': {
         yumrepo { 'upstream_rsyslog':
           ensure   => 'present',
